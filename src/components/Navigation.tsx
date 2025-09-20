@@ -1,11 +1,14 @@
-import { Shield, Menu, X } from "lucide-react";
+import { Shield, Menu, X, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { user, signOut } = useAuth();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -44,9 +47,39 @@ const Navigation = () => {
             >
               Outbreak Data & Blog
             </Link>
-            <Button size="sm" variant="default">
-              Report Symptoms
-            </Button>
+            {user && (
+              <Link
+                to="/reports"
+                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  isActive("/reports")
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Reports
+              </Link>
+            )}
+            
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button size="sm" variant="outline">
+                    <User className="h-4 w-4 mr-2" />
+                    Account
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem onClick={signOut}>
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Sign Out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Button size="sm" variant="default" asChild>
+                <Link to="/auth">Sign In</Link>
+              </Button>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -87,10 +120,38 @@ const Navigation = () => {
               >
                 Outbreak Data & Blog
               </Link>
+              {user && (
+                <Link
+                  to="/reports"
+                  className={`block px-3 py-2 rounded-md text-base font-medium ${
+                    isActive("/reports")
+                      ? "text-primary bg-primary/10"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Reports
+                </Link>
+              )}
               <div className="px-3 py-2">
-                <Button size="sm" variant="default" className="w-full">
-                  Report Symptoms
-                </Button>
+                {user ? (
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    className="w-full" 
+                    onClick={() => {
+                      signOut();
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Sign Out
+                  </Button>
+                ) : (
+                  <Button size="sm" variant="default" className="w-full" asChild>
+                    <Link to="/auth" onClick={() => setIsMenuOpen(false)}>Sign In</Link>
+                  </Button>
+                )}
               </div>
             </div>
           </div>
