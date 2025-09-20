@@ -6,13 +6,13 @@ import { useState } from "react";
 
 // Mock outbreak data
 const outbreakData = [
-  { month: "Jan", cases: 12, recovered: 10, deaths: 1 },
-  { month: "Feb", cases: 15, recovered: 13, deaths: 1 },
-  { month: "Mar", cases: 23, recovered: 18, deaths: 2 },
-  { month: "Apr", cases: 35, recovered: 28, deaths: 3 },
-  { month: "May", cases: 28, recovered: 25, deaths: 2 },
-  { month: "Jun", cases: 18, recovered: 17, deaths: 1 },
-  { month: "Jul", cases: 12, recovered: 11, deaths: 0 },
+  { area: "Makueni", cases: 12, recovered: 10, deaths: 1 },
+  { area: "Kisumu", cases: 15, recovered: 13, deaths: 1 },
+  { area: "Nairobi", cases: 23, recovered: 18, deaths: 2 },
+  { area: "Mombasa", cases: 35, recovered: 28, deaths: 3 },
+  { area: "Nakuru", cases: 28, recovered: 25, deaths: 2 },
+  { area: "Kajiado", cases: 18, recovered: 17, deaths: 1 },
+  { area: "Magadi", cases: 12, recovered: 11, deaths: 0 },
 ];
 
 const preventionTips = [
