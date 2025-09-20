@@ -36,6 +36,23 @@ export default defineConfig({
             type: 'image/png',
           },
         ],
+
+        
+        screenshots: [
+    {
+      "src": "/desktop-screenshot.png",
+      "sizes": "1897x950",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "public/mobile-screenshot.png",
+      "sizes": "599x816",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+        
+        ]
       },
        workbox: {
         globPatterns: ['**/*.{js,css,html,png,jpg,jpeg,webp,svg}'],
