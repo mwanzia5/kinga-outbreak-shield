@@ -55,7 +55,7 @@ const Index = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="text-lg px-8 py-4 shadow-medical">
-              Report Symptoms
+               <Link to="/NotFound.tsx">Reports</Link>
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 py-4" asChild>
               <Link to="/blog">View Outbreak Data</Link>
