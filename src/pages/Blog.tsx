@@ -6,7 +6,7 @@ import { useState } from "react";
 
 // Mock outbreak data
 const outbreakData = [
-  { month: "Jan", cases: 12, recovered: 10, deaths: 1 },
+  { month: "Janu", cases: 12, recovered: 10, deaths: 1 },
   { month: "Feb", cases: 15, recovered: 13, deaths: 1 },
   { month: "Mar", cases: 23, recovered: 18, deaths: 2 },
   { month: "Apr", cases: 35, recovered: 28, deaths: 3 },
